@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+</head>
+<body>
+  <form id="loginForm">
+    <label>Username:</label>
+    <input type="text" id="username" required>
+
+    <label>Password:</label>
+    <input type="password" id="password" required>
+
+    <label>Age:</label>
+    <input type="number" id="age" required>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", function(e) {
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        e.preventDefault();
+        return;
+      }
+      const age = parseInt(document.getElementById("age").value, 10);
+      if (age < 18) {
+        e.preventDefault();
+        alert("You must be 18 or older to log in.");
+      } else {
+        alert("Login successful!");
+      }
+    });
+  </script>
+</body>
+</html>
